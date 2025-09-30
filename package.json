@@ -1,0 +1,20 @@
+{
+  "name": "learningbackend",
+  "version": "1.0.0",
+  "description": "a backend for yt dupe",
+  "keywords": [
+    "javascript",
+    "backend"
+  ],
+  "license": "ISC",
+  "author": "Shubham suthar",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2"
+  }
+}
