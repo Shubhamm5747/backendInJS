@@ -31,12 +31,12 @@ const app = express()
 ( async () => {
     try {
         await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
-        app.on("error", (error) => {
+        app.on("error", (error) => {     //app.on is used to listen for an event and here that event is an error
             console.log("Error : ",error )
             throw error
         })
 
-        app.listen(process.env.PORT, ()=>{
+        app.listen(process.env.PORT, ()=>{ //server connected
             console.log(`App is listening on Port : ${process.env.PORT}`);
         })
         
