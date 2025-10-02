@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
 
-const UserSchema = new Schema({
+const userSchema = new Schema({
     username : {
         type : String,
         required : true,
@@ -51,7 +51,7 @@ const UserSchema = new Schema({
 
 //middleware of mongoose that is used to hash the password whenever its modified
 //using normal function instead of arrow in callback to get access of this keyword
-UserSchema.pre("save", async function (next) {
+userSchema.pre("save", async function (next) {
     if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 10);
     next();
@@ -59,8 +59,8 @@ UserSchema.pre("save", async function (next) {
 })
 
 //to check password is true or false or input pass is matching the hash 
-//just like custom hooks, it is a custom something
-UserSchema.methods.isPasswordcorrect = async function (password) {
+//just like custom hooks, it is a custom something of middleware (i think)
+userSchema.methods.isPasswordcorrect = async function (password) {
     return await bcrypt.compare(password, this.password)
 }
 
@@ -93,4 +93,4 @@ userSchema.methods.generateRefreshToken = function (){
     )
 }
 
-export const User = mongoose.model('User', UserSchema)
+export const User = mongoose.model('User', userSchema)
