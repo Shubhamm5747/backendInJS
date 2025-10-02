@@ -10,8 +10,7 @@ router.route("/register").post(registerUser)
 router.route("/login").post(loginUser)
 
 //secured routes
-//added a middleware named Verifyjwt here
-router.route("/logout").post(Verifyjwt, logoutUser)
+router.route("/logout").post(Verifyjwt, logoutUser) //added a middleware named Verifyjwt here
 router.route("/refresh-token").post(refreshAccessToken)
 
 export default router;
